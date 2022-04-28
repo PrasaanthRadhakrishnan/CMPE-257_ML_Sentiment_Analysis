@@ -1,0 +1,23 @@
+{
+  "name": "Test extension 2: popup",
+  "description": "Read URL and POPUP",
+  "version": "3.0",
+  "manifest_version": 3, 
+
+  "permissions": ["storage","tabs"],
+
+  "icons": {
+    "48":"/images/icon48.png",
+    "96":"/images/icon96.png"
+  }, 
+  "action":{
+    "default_popup": "popup.html",
+    "default_title":" Capture youtube url"
+  },
+
+  "content_scripts":[{
+    "matches": ["https://www.youtube.com/*"],
+    "js":["/js/content.js"]
+  }]
+
+}
