@@ -32,9 +32,13 @@ regex==2022.4.24
     #   nltk
 six==1.16.0
     # via python-dateutil
+tdqm==0.0.1
+    # via -r ./requirements.in
 textblob==0.17.1
     # via -r ./requirements.in
 tqdm==4.64.0
-    # via nltk
+    # via
+    #   nltk
+    #   tdqm
 urllib3==1.26.9
     # via apiclient

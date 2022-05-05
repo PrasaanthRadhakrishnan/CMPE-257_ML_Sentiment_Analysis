@@ -3,4 +3,5 @@ numpy
 textblob
 nltk
 regex
+tdqm
 apiclient
