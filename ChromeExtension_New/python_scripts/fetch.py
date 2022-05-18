@@ -47,7 +47,7 @@ def get_comments(service, video_id, output_filename):
         maxResults = 100,
         order = "relevance"
     ).execute()
-    print('pls work')
+    # print('pls work')
     comments = []
     for item in comment_threads_response["items"]:
         comment = item["snippet"]["topLevelComment"]
