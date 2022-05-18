@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyze URL</title>
+    <style>
+        .button{
+            display: inline-flex;
+            height: 50px;
+            padding: 0;
+            background: #5CC0F5;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            overflow: hidden;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: #0381C5
+        }
+        .button:active {
+            background: #076090;
+        }
+        .button-text, .button-icon {
+            display: inline-flex;
+            align-items: center;
+            padding: 0 24px;
+            color: #fff;
+            height: 100%
+        }
+        .button-icon{
+            font-size: 1.5em;
+            background: rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <button type="button" class="button" id="myButton">
+        <span class="button-text">Get Analysis</span>
+        <span class="button-icon"><ion-icon name="alert"></ion-icon></span>
+    </button>
+    <p id="msg"></p>
+</div>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="sample_extension.js"></script>
+</body>
+</html>
