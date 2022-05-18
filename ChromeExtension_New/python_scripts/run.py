@@ -12,14 +12,13 @@ import os
 
 
 #def main(url=sys.argv[1], output_filename='temp/comments.csv'):
-def run(url='https://www.youtube.com/watch?v=le0BLAEO93g', output_filename='temp/comments.csv.csv.csv'):
+def run(url='https://www.youtube.com/watch?v=YbJOTdZBX1g', output_filename='temp/comments.csv'):
     sentiment_score = 0
     comments = fetch(url, output_filename)
+
     df = pd.read_csv(comments)
     df['sentiment'] = df['comment'].apply(lambda x: TextBlob(x).sentiment.polarity)
-    df['subjectivity'] = df['comment'].apply(lambda x: TextBlob(x).sentiment.subjectivity)
-    sentiment_score = (df['sentiment'].sort_values('sentiment', 0).median())
-    os.remove(output_filename)
+    sentiment_score = df['sentiment'].mean()
     print(sentiment_score)
     # return sentiment_score
 
