@@ -3,7 +3,7 @@ import json
 import pandas as pd
 
 # pip install google-api-python-client
-from apiclient.discovery import build
+from googleapiclient.discovery import build
 from csv import writer
 from urllib.parse import urlparse, parse_qs
 
@@ -40,26 +40,23 @@ def get_comments(service, video_id, output_filename):
     https://python.gotrained.com/youtube-api-extracting-comments/#Cache_Credentials
     https://www.pingshiuanchua.com/blog/post/using-youtube-api-to-analyse-youtube-comments-on-python
     """
-    output_dict = {}
-    for i, video in enumerate(video_id):
-        comment_threads_response = service.commentThreads().list(
-            part = "snippet",
-            videoId = video,
-            textFormat = "plainText",
-            maxResults = 100,
-            order = "relevance"
-        ).execute()
-        comments = []
-        for item in comment_threads_response["items"]:
-            comment = item["snippet"]["topLevelComment"]
-            comments.append(comment["snippet"]["textDisplay"])
-        output_dict[video] = comments
-        if i % 100 == 0:
-            save_to_csv(output_dict, video_id, output_filename)
-    
+    comment_threads_response = service.commentThreads().list(
+        part = "snippet",
+        videoId = video_id,
+        textFormat = "plainText",
+        maxResults = 100,
+        order = "relevance"
+    ).execute()
+    comments = []
+    for item in comment_threads_response["items"]:
+        comment = item["snippet"]["topLevelComment"]
+        comments.append(comment["snippet"]["textDisplay"])
+    save_to_csv(comments, video_id, output_filename)
+
 def save_to_csv(output_dict, video_id, output_filename):
     output_df = pd.DataFrame(output_dict, columns = output_dict.keys())
     output_df.to_csv(f'{output_filename}.csv')
+    return output_filename
 
 def main(url='https://www.youtube.com/watch?v=dQw4w9WgXcQ', output_filename='temp/comments.csv'):
     service = build_service()
