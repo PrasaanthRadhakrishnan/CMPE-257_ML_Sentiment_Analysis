@@ -2,6 +2,7 @@ import argparse
 import json
 import pandas as pd
 
+# pip install google-api-python-client
 from apiclient.discovery import build
 from csv import writer
 from urllib.parse import urlparse, parse_qs
@@ -40,7 +41,7 @@ def get_comments(service, video_id, output_filename):
     https://www.pingshiuanchua.com/blog/post/using-youtube-api-to-analyse-youtube-comments-on-python
     """
     output_dict = {}
-    for i, video in enumerate(video_id, ncols = 100):
+    for i, video in enumerate(video_id):
         comment_threads_response = service.commentThreads().list(
             part = "snippet",
             videoId = video,
